@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Input layout for symbol selection -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/symbolInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/select_your_symbol"
+        app:layout_constraintEnd_toStartOf="@+id/subscribeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/symbolInput"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:completionThreshold="1"
+            android:maxLength="7"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Button to subscribe to market data for the selected symbol -->
+    <Button
+        android:id="@+id/subscribeButton"
+        style="@style/MyButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:minHeight="56dp"
+        android:text="@string/subscribe"
+        app:layout_constraintBottom_toBottomOf="@+id/symbolInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/symbolInputLayout" />
+
+    <!-- Label for Market Data section -->
+    <TextView
+        android:id="@+id/marketDataLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/market_data_label"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/symbolInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/symbolInputLayout" />
+
+    <!-- Container for Market Data section with border -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/marketDataContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_gray_border"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/subscribeButton"
+        app:layout_constraintStart_toStartOf="@+id/symbolInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/marketDataLabel">
+
+        <!-- Symbol Label and Text -->
+        <TextView
+            android:id="@+id/symbolLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/symbol_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/symbolText"
+            app:layout_constraintStart_toStartOf="@+id/symbolText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/symbolText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
+            android:text="NA"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/symbolLabel" />
+
+        <!-- Price Label and Text -->
+        <TextView
+            android:id="@+id/priceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/priceText"
+            app:layout_constraintStart_toStartOf="@+id/priceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/priceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="--"
+            app:layout_constraintEnd_toStartOf="@+id/timeText"
+            app:layout_constraintStart_toEndOf="@+id/symbolText"
+            app:layout_constraintTop_toBottomOf="@id/priceLabel" />
+
+        <!-- Time Label and Text -->
+        <TextView
+            android:id="@+id/timeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/timeText"
+            app:layout_constraintStart_toStartOf="@+id/timeText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="6dp"
+            android:text="--:--"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Label for Charting Data section -->
+    <TextView
+        android:id="@+id/chartLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/charting_data_label"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/marketDataContainer"
+        app:layout_constraintTop_toBottomOf="@id/marketDataContainer" />
+
+    <!-- Line Chart for displaying market data -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chartLabel" />
+
+    <!-- Transparent overlay displayed during loading state -->
+    <View
+        android:id="@+id/loadingOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#80000000"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Progress bar displayed during loading state -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

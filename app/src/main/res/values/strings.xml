@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MarketData</string>
+
+    <!-- UI labels and placeholders -->
+    <string name="select_your_symbol">Select your symbol</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="market_data_label">Market data:</string>
+    <string name="symbol_label">Symbol:</string>
+    <string name="price_label">Price:</string>
+    <string name="time_label">Time:</string>
+    <string name="charting_data_label">Charting data:</string>
+    <string name="no_data_text">Select a symbol and press \'Subscribe\' to load data</string>
+    <string name="select_symbol_message">Please select a valid symbol from the dropdown list.</string>
+    <string name="closing_prices_label">Closing Prices</string>
+
+    <!-- Default values and unavailable data placeholders -->
+    <string name="default_symbol">USD/CAD</string>
+    <string name="data_unavailable">--</string>
+    <string name="time_unavailable">--:--</string>
+
+</resources>
