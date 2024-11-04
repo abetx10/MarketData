@@ -19,7 +19,7 @@ The app is built using the following technologies:
 
 |      Main View       |       Select Symbol       |
 | :-------------------: | :-----------------------: |
-| ![Main View](app/screenshots/MainView.png) | ![Select Symbol](app/screenshots/SelectSymbol.png) |
+| ![Main View](app/screenshots/MainView.jpg) | ![Select Symbol](app/screenshots/SelectSymbol.jpg) |
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/abetx10/MarketData.git`
